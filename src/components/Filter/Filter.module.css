@@ -1,0 +1,16 @@
+.filterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filterLabel {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filterName {
+  padding: 5px;
+  margin-left: 10px;
+}
