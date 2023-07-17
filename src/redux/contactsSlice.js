@@ -45,30 +45,30 @@ const contactsSlice = createSlice({
       state.filter = action.payload;
     },
   },
-  extraReducers: builder => {
-    builder
-      .addCase(fetchContacts.pending, state => {
-        state.status = 'loading';
-      })
-      .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.items = action.payload;
-      })
-      .addCase(fetchContacts.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      })
-      .addCase(createContact.fulfilled, (state, action) => {
-        state.items.push(action.payload);
-      })
-      .addCase(deleteContact.fulfilled, (state, action) => {
-        state.items = state.items.filter(
-          contact => contact.id !== action.payload
-        );
-      });
+  extraReducers: {
+    [fetchContacts.pending]: state => {
+      state.status = 'loading';
+    },
+    [fetchContacts.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      state.items = action.payload;
+    },
+    [fetchContacts.rejected]: (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    },
+    [createContact.fulfilled]: (state, action) => {
+      state.items.push(action.payload);
+    },
+    [deleteContact.fulfilled]: (state, action) => {
+      state.items = state.items.filter(
+        contact => contact.id !== action.payload
+      );
+    },
   },
 });
 
 export const { setFilter } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
+
